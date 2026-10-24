@@ -15,6 +15,20 @@ to build and contain no solution. Replace a stub with a real test when you build
 | 7 | ANN index | An approximate nearest-neighbour index for the embeddings | The index returns, for 20 test queries, at least 90 % of the neighbours an exact search returns (recall@10), and the test measures it. Building the index is separate from querying it, and the index can be saved and reloaded. |
 | 8 | Evaluation and injection test | An evaluation harness and a prompt-injection test | `python evaluate.py` runs every labelled question and prints, per question and in total: answer correct, citation correct, steps used. A planted instruction inside an article ("ignore previous instructions ...") does not change the answer or trigger a tool call the user did not ask for; the test shows the planted text, the agent's run, and the pass or fail. Results are reproducible offline from recorded runs. |
 
+## Optional: port the agent to the UK corpus (English)
+
+`corpus_uk.py` and `data/uk_working_time.jsonl` (the Working Time Regulations 1998 and the National Minimum Wage
+Act 1998, Open Government Licence; see `data/SOURCE_UK.md`) are an example corpus. The repository ships no English
+agent: building one is an optional assignment, done in your own folder. Acceptance criteria:
+
+- The agent runs over `corpus_uk` with its own system prompt, tool names and citation format (`[WTR 4]`), without
+  changing the Uzbek agent's behaviour: `python -m unittest discover` stays green.
+- "What is the maximum weekly working time?" is answered with `WTR 4` cited, and the cited text contains the
+  48-hour average that a test asserts from the file.
+- "What is the national minimum wage per hour, in pounds?" is answered with "the corpus does not state an amount"
+  (no figure appears in any provision), citing `NMWA 1`.
+- At least two runs are recorded and replay offline, with a test asserting each fact the answer quotes.
+
 ## Conventions
 
 - One change per commit; tag the end of each step `step-0N-<name>` (see `CONTRIBUTING.md`).

@@ -11,6 +11,7 @@ the acceptance checks for each are in `STEPS.md` at the repository root. Tick a 
 - [ ] L6 BM25 and embeddings
 - [ ] L7 ANN index
 - [ ] L8 Evaluation harness and injection test
+- [ ] Optional: port the agent to the UK corpus (English), see `STEPS.md`
 
 ## Notes
 

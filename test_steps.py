@@ -125,5 +125,25 @@ class Lecture8Evaluation(unittest.TestCase):
         pass
 
 
+class OptionalUKPort(unittest.TestCase):
+    """Optional: port the agent to the UK example corpus (see STEPS.md)."""
+
+    @unittest.skip("Optional: the agent runs over corpus_uk with its own prompt and citations, and the Uzbek agent is unchanged.")
+    def test_the_agent_runs_over_the_uk_corpus(self):
+        pass
+
+    @unittest.skip("Optional: the maximum weekly working time is answered citing WTR 4 and the 48-hour average read from the file.")
+    def test_the_weekly_limit_cites_wtr_4(self):
+        pass
+
+    @unittest.skip("Optional: the minimum wage question is answered 'the corpus states no amount', citing NMWA 1.")
+    def test_the_minimum_wage_answer_states_no_amount(self):
+        pass
+
+    @unittest.skip("Optional: at least two runs are recorded and replay offline with every quoted fact asserted.")
+    def test_recorded_runs_replay_offline(self):
+        pass
+
+
 if __name__ == "__main__":
     unittest.main()
