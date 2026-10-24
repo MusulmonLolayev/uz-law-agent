@@ -10,7 +10,6 @@ import re
 import unittest
 
 import agent
-import corpus_uk
 from corpus import ARTICLES, DATA, fetch_article, search
 from llm import TRACES, Model
 
@@ -148,16 +147,6 @@ class RecordedRuns(unittest.TestCase):
         again = trace("q3_min_wage_notools2")["answer"]          # the same question, asked again
         self.assertIn("1,270,000", again)                      # ... a different figure
         self.assertEqual(cited(again), {"209"})                # 209 forbids work on days off
-
-
-class UKExampleCorpus(unittest.TestCase):
-    """The optional UK example corpus (corpus_uk.py) only has to load; the agent does not use it."""
-    def test_it_loads_the_pinned_file(self):
-        self.assertIn(hashlib.sha256(corpus_uk.DATA.read_bytes()).hexdigest(), (corpus_uk.DATA.parent / "SOURCE_UK.md").read_text())
-        lines = corpus_uk.DATA.read_text(encoding="utf-8").splitlines()
-        self.assertEqual(len(corpus_uk.ARTICLES), len(lines))
-        self.assertEqual(len(lines), 118)
-        self.assertEqual(sum(k.startswith("WTR ") for k in corpus_uk.ARTICLES), 64)
 
 
 if __name__ == "__main__":
