@@ -1,4 +1,4 @@
-"""A ReAct loop over the codes of Uzbekistan (the corpus included so far is the Labor Code).
+"""A ReAct loop of the Uzbek law agent (the law wired in so far is the Labor Code, the course example).
 
 The model writes a Thought and one Action as plain text; our code reads the Action, runs the tool, and appends the
 result as an Observation. Then the model reads the whole trace again and writes the next Thought. It stops when the

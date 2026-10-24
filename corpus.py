@@ -1,4 +1,4 @@
-"""The starter corpus, the Labor Code of Uzbekistan (one article per record), and the two tools the agent may call on it.
+"""The Labor Code of Uzbekistan, the course example (one article per record), and the two tools the agent may call on it.
 
 The tools are deliberately naive: `search` counts how many of the query's words an article contains. A better
 retriever can replace it; the interface (`search`, `fetch_article`) stays the same.

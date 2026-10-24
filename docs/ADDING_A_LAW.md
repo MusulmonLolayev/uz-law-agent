@@ -1,8 +1,8 @@
-# Adding another code of Uzbekistan as a corpus
+# Adding another Uzbek law as a corpus
 
-This project is an open-source research agent over the codes of Uzbekistan. The first corpus included is the Labor
-Code of Uzbekistan (`data/mehnat_kodeksi.jsonl`), the corpus used in the course videos; the loop, the recorded runs and the tests in this
-repository use it. This page says how to add another code, using only what the code does today, with `corpus.py` as
+This project is an open-source Uzbek law agent. The one law included is the Labor Code of Uzbekistan
+(`data/mehnat_kodeksi.jsonl`), the course example; the loop, the recorded runs and the tests in this repository use it.
+This page says how to add another law, using only what the code does today, with `corpus.py` as
 the pattern.
 
 **What is and is not wired.** Today the agent loop is wired to the Labor Code corpus: `agent.py`'s command line sets
