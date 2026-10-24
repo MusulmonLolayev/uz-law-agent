@@ -1,7 +1,7 @@
 [project]
 name = "uz-law-agent"
 version = "0.1.0"
-description = "An open-source research agent over the Labor Code of Uzbekistan, built step by step in Module 7"
+description = "An open-source research agent over Uzbek law (starter corpus: the Labor Code)"
 requires-python = ">=3.11"
 dependencies = ["openai>=1.40"]
 license = "MIT"

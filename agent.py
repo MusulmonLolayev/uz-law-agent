@@ -1,4 +1,4 @@
-"""Lecture 1: a ReAct loop over the Labor Code of Uzbekistan.
+"""A ReAct loop over Uzbek law (the starter corpus is the Labor Code of Uzbekistan).
 
 The model writes a Thought and one Action as plain text; our code reads the Action, runs the tool, and appends the
 result as an Observation. Then the model reads the whole trace again and writes the next Thought. It stops when the
@@ -8,7 +8,7 @@ model calls answer[...] or when the step limit is reached.
     python agent.py --replay q2_under18                       # a recorded run, no network needed
     python agent.py --record q2_under18 "..."                 # run live and save it
 
-Switches for the session's experiments:
+Switches for experiments:
     --no-tools       no loop at all: ask the model once, from memory (what a plain chatbot does)
     --max-steps N    the step limit (default 8); too small, and the loop stops before the answer
     --no-stop        do not cut the model off at "Observation:" (the safety net against a model that writes the

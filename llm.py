@@ -1,6 +1,6 @@
 """The model, behind one function: complete(messages, stop) -> the text it writes.
 
-Three modes, so a class demo never depends on the Wi-Fi:
+Three modes, so a demo never depends on the network:
   live     call DeepSeek (OpenAI-compatible API); needs DEEPSEEK_API_KEY in the environment or in .env here
   record   live, and save every reply to traces/<name>.json
   replay   play the saved replies back in order, checking that each prompt is the one that was recorded
@@ -12,7 +12,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 TRACES = HERE / "traces"
-MODEL = "deepseek-flash"             # the module's pinned cheap model (course-map.md, "model and cost baseline")
+MODEL = "deepseek-flash"             # a cheap DeepSeek model
 
 for line in (HERE / ".env").read_text().splitlines() if (HERE / ".env").exists() else []:
     k, sep, v = line.partition("=")

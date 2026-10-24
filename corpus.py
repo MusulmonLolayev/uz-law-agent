@@ -1,7 +1,7 @@
-"""The Labor Code of Uzbekistan, one article per record, and the two tools the agent may call on it.
+"""The starter corpus, the Labor Code of Uzbekistan (one article per record), and the two tools the agent may call on it.
 
-Lecture 1 keeps the tools deliberately naive: `search` counts how many of the query's words an article contains.
-Lectures 5-7 replace it (chunking, BM25, embeddings, an ANN index); the interface stays the same.
+The tools are deliberately naive: `search` counts how many of the query's words an article contains. A better
+retriever can replace it; the interface (`search`, `fetch_article`) stays the same.
 """
 import json
 import re
@@ -11,7 +11,7 @@ DATA = Path(__file__).parent / "data" / "mehnat_kodeksi.jsonl"
 ARTICLES = {a["article_id"]: a for a in map(json.loads, DATA.read_text(encoding="utf-8").splitlines())}
 
 # A keyboard gives ASCII ' or ‘ ’ where the corpus has ʻ (oʻ, gʻ) or ʼ (tutuq belgisi). Both sides are mapped to
-# one character before matching, or "o'n sakkiz" would never find "oʻn sakkiz". Lecture 6 is about this line.
+# one character before matching, or "o'n sakkiz" would never find "oʻn sakkiz".
 APOSTROPHES = str.maketrans({c: "ʻ" for c in "ʼ'‘’`"})
 
 
@@ -63,7 +63,7 @@ Action: <one action>
 Then stop. The result comes back to you as "Observation: ...". Never write an Observation yourself."""
 
 NO_TOOLS = "You answer questions about the Labor Code of Uzbekistan. Cite the article for every claim as [Art. N]."
-QUESTIONS = {   # the three questions of the Lecture 1 session
+QUESTIONS = {   # the three questions of the recorded runs
     "q1_week": "What is the maximum normal working week?",
     "q2_under18": "What is the maximum normal working week, and does it differ for employees under 18?",
     "q3_min_wage": "What is the minimum monthly wage in Uzbekistan, in soʻm?",

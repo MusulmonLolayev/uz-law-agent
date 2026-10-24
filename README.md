@@ -1,9 +1,12 @@
 # uz-law-agent
 
-An open-source research agent over the Labor Code of Uzbekistan (581 articles, Uzbek), built step by step by
-students in Module 7 (AI Agents, Tool Use & Retrieval) of the Advanced AI course. The repository starts at
-Lecture 1: a ReAct loop (Thought / Action as text) with three actions, `search`, `fetch_article` and `answer`, and a
-step budget. Lectures 2-8 add schemas, memory, a verifier, retrieval and evaluation; see [STEPS.md](STEPS.md).
+An open-source research agent over Uzbek law. It answers a question by searching the law and reading articles, and
+cites the articles it used. The starter corpus is the Labor Code of Uzbekistan (581 articles, Uzbek, CC0): it is the
+corpus used in the course videos, and the agent loop, the recorded runs and the tests in this repository use it. The
+project came out of the Advanced AI course.
+
+The agent is a ReAct loop (Thought / Action as text) with three actions, `search`, `fetch_article` and `answer`, and
+a step budget.
 
 ## Quick start
 
@@ -23,7 +26,7 @@ uv run python agent.py --record NAME "question"    # run live and save it to tra
 ## Tests
 
 ```bash
-uv run python -m unittest discover -v          # offline; the tests for Lectures 2-8 are skipped stubs
+uv run python -m unittest discover -v          # offline, no key
 ```
 
 ## Layout
@@ -33,19 +36,23 @@ uv run python -m unittest discover -v          # offline; the tests for Lectures
 | `agent.py` | the ReAct loop and command line |
 | `corpus.py` | the articles and the two tools (`search`, `fetch_article`) |
 | `llm.py` | the model behind one function: live, record, replay |
-| `data/` | the Labor Code (`mehnat_kodeksi.jsonl`, `SOURCE.md`) and an optional UK example corpus |
+| `data/` | the starter corpus, the Labor Code (`mehnat_kodeksi.jsonl`, `SOURCE.md`) |
 | `traces/` | recorded runs, replayed offline |
-| `test_agent.py`, `test_steps.py`, `test_no_secrets.py`, `test_pr_scope.py` | tests; `test_steps.py` holds the skipped acceptance stubs |
-| `assignments/` | one folder per student; `_template/` to copy |
-| `scripts/check_pr_scope.py` | the pull-request scope check |
+| `test_agent.py`, `test_no_secrets.py` | tests |
+| `docs/` | [ADDING_A_LAW.md](docs/ADDING_A_LAW.md): how to add another Uzbek law as a corpus |
 
-## Submitting your work
+## Corpora
 
-Copy `assignments/_template` to `assignments/<your-github-username>/`, work only there, and submit by pull request.
-A pull request that changes anything outside your folder fails the `pr-scope` check. See
-[assignments/README.md](assignments/README.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Starter corpus: the Labor Code of Uzbekistan** (CC0, in the repository, `data/mehnat_kodeksi.jsonl`). The agent
+  loop, the recorded runs and the tests use it.
+- **More laws:** [docs/ADDING_A_LAW.md](docs/ADDING_A_LAW.md) describes the record format, the two tools, the source
+  note and the licence check. No other law is included yet, and the loop is wired to the Labor Code, so using a second
+  law in the agent is open work.
+
+## Contributing
+
+Pull requests are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 
 Code: MIT, see [LICENSE](LICENSE). Data: the Labor Code of Uzbekistan is CC0, see [data/SOURCE.md](data/SOURCE.md).
-The optional UK example corpus is under the Open Government Licence v3.0, see [data/SOURCE_UK.md](data/SOURCE_UK.md).
