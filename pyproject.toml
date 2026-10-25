@@ -1,7 +1,0 @@
-[project]
-name = "uz-law-agent"
-version = "0.1.0"
-description = "An open-source Uzbek law agent, developed following Module 7 of the Advanced AI course"
-requires-python = ">=3.11"
-dependencies = ["openai>=1.40"]
-license = "MIT"
